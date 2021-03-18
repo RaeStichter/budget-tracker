@@ -4,7 +4,7 @@
 // variable to hold the db connection
 let db;
 // establish a connection to IndexedDb db called 'budget' and set the version to 1
-const request = indexedDB.open('budget', 1);
+const request = indexedDB.open('budget_tracker', 1);
 
 // This will run if there is a db version change
 request.onupgradeneeded = function(event) {
@@ -32,6 +32,7 @@ request.onerror = function(event) {
 
 // if we attempt to log a new transaction offline
 function saveRecord(record) {
+    console.log('saveRecord reached.');
     // open a new transaction with the database with read and write permission
     const transaction = db.transaction(['new_transaction'], 'readwrite');
 
